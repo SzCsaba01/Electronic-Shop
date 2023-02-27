@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="card border-primary mb-3 text-dark" *ngFor="let cartProduct of cartProducts">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <img [src]="cartProduct.picture" (click)="onViewProductDetails(cartProduct.id)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h4>{{cartProduct.name}}</h4>
+            </div>
+            <div class="col-md-auto">
+                Price
+            </div>
+            <div class="col col-lg-2">
+                {{cartProduct.price | currency : 'EUR'}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="add" *ngIf="!emptyCart">
+    <div>Total Price: {{totalPrice | currency : 'EUR'}}</div>
+    <span>We will ship to the address from your profile details !!!</span>
+    <button class="btn btn-primary" (click)="onAddOrder()">Add Order</button>
+</div>
+<div class="add" *ngIf="emptyCart">Your cart is empty!</div>
+

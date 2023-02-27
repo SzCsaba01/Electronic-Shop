@@ -1,0 +1,87 @@
+<app-header></app-header>
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">ADD PRODUCT</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <form [formGroup]="addProductForm" novalidate>
+            <div class="form-group">
+              <label>Name</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                formControlName="name" 
+                [ngClass]="{'is-invalid': name.errors && (name.touched || name.dirty), 'is-valid':name.valid}">
+              <div class="invalid-feedback" >
+                <strong *ngIf="name.errors?.['required']">Name is required</strong>
+              </div>
+            </div>
+            <div class="form-group ">
+              <label>Price</label>
+              <input 
+                type="number" 
+                class="form-control" 
+                formControlName="price"
+                [ngClass]="{'is-invalid': price.errors && (price.touched || price.dirty), 'is-valid': price.valid}">
+              <div class="invalid-feedback">
+                <strong *ngIf="price.errors?.['required']">Price is required</strong>
+                <strong *ngIf="price.errors?.['min']">Price must be atleast 1</strong>
+              </div> 
+            </div>
+            <div class="form-group ">
+              <label>Discount</label>
+              <input 
+               type="number" 
+               class="form-control" 
+               formControlName="discount" 
+               [ngClass]="{'is-invalid': discount.errors && (discount.touched || discount.dirty), 'is-valid': discount.valid}">
+              <div class="invalid-feedback" >
+                <strong *ngIf="discount.errors?.['required']">Discount is required</strong>
+                <strong *ngIf="discount.errors?.['min']">Discount must be atleast 0.0</strong> 
+                <strong *ngIf="discount.errors?.['max']">Discount can be maximum 50.0</strong>  
+              </div>
+            </div>
+            <div class="form-group ">
+              <label>Stock</label>
+              <input 
+               type="number" 
+               class="form-control" 
+               formControlName="stock" 
+               [ngClass]="{'is-invalid': stock.errors && (stock.touched || stock.dirty), 'is-valid': discount.valid}">
+              <div class="invalid-feedback" >
+                <strong *ngIf="stock.errors?.['required']">stock is required</strong>
+                <strong *ngIf="stock.errors?.['min']">stock must be atleast 0</strong>   
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Product Type</label>
+              <select 
+                class="form-control" 
+                formControlName="productType" 
+                [ngClass]="{'is-invalid': productType.errors && (productType.touched || productType.dirty), 'is-valid':productType.valid}" >
+                <option *ngFor="let p of productTypes">{{ ProductTypes[p]}}</option>
+              </select>
+              <div class="invalid-feedback" >
+                  <strong>Select Product Type.</strong>    
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Product Picture</label>
+              <input 
+                type ="file"
+                class="form-control"
+                formControlName="file"
+                accept="image/png, image/jpeg"
+                (change)="onUploadfile(fileInput.files)"
+                #fileInput
+                [ngClass]="{'is-invalid': file.errors && (file.touched || file.dirty), 'is-valid':file.valid}">
+              <div class="invalid-feedback" >
+                  <strong>Picture is required</strong>    
+              </div>
+            </div>
+            <button type="submit" [disabled]="addProductForm.invalid" (click)="addProduct(addProductForm.value)" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>  
+    </div>
+  </div>

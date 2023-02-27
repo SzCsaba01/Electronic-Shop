@@ -1,0 +1,148 @@
+<app-header (searchEvent)="onSearchProductsByName($event)"></app-header>
+<mat-grid-list [cols]=numberOfColumns rowHeight="500px">
+  <mat-grid-tile class="custom-mat-grit-tile" *ngFor="let p of rowData">
+    <app-product [product]="p"
+        (editingProduct)="changeShowEditModal($event)"
+        (removedProduct)="changeShowDeleteModal($event)"
+        (addedToCart)="onAddingToCart($event)"
+        (addedToFavorites)="onAddingToFavorites($event)"
+        (viewProductDetails)="onViewProductDetails($event)">
+    </app-product>
+</mat-grid-tile>
+</mat-grid-list>
+
+<div class="d-flex justify-content-end">
+  <span class="label">
+      {{currentNumberOfProductsStartRow}} to {{currentNumberOfProductsEndRow}} of {{totalNumberOfProducts}}
+      <button class="btn btn-light" (click)="firstPage()" [disabled]="getProductsByTypeDto.page == 1">
+          <i class="bi bi-chevron-bar-left"></i>
+      </button>
+      <button class="btn btn-light" (click)="previousPage()" [disabled]="getProductsByTypeDto.page == 1">
+          <i class="bi bi-chevron-compact-left"></i>
+      </button>
+      Page {{getProductsByTypeDto.page}} of {{totalNumberOfPages}}
+      <button class="btn btn-light" (click)="nextPage()" [disabled]="getProductsByTypeDto.page == totalNumberOfPages">
+          <i class="bi bi-chevron-compact-right"></i>
+      </button>
+      <button class="btn btn-light" (click)="lastPage()" [disabled]="getProductsByTypeDto.page == totalNumberOfPages">
+          <i class="bi bi-chevron-bar-right"></i>
+      </button>
+  </span>
+</div>
+
+<div *ngIf="isShownDeleteModal" class="modal" [ngStyle]="{'display':'block'}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Do you want to remove this product?</h4>
+                <i (click)="closeShowDeleteModal()" class="close bi bi-x-circle clickable cancel-button-modals"></i>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" (click)="onRemoveProduct()" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" *ngIf="isShownEditModal" [ngStyle]="{'display':'block'}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLongTitle">Edit product</h4>
+          <i (click)="closeShowEditModal()" class="close bi bi-x-circle clickable cancel-button-modals"></i>
+        </div>
+        <div class="modal-body">
+        <div class="image">
+            <input 
+            class="file-upload-input"
+            [hidden]="true" 
+            type="file" 
+            (change)="onChangeProductPicture(fileInput.files)" 
+            accept="image/png, image/jpeg"
+            #fileInput>
+          <button 
+            type="button" 
+            (click)="fileInput.click()" 
+            class="btn file-upload-btn">
+            <img [src]="productPicture"
+              onerror="src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'"
+              alt="avatar" 
+              class="rounded img-fluid">
+          </button>
+          <button 
+            type="button" 
+            class="btn btn-primary file-upload-btn btn-size"
+            (click)="onSaveProductPicture()">
+            Save changes
+        </button> 
+        </div>
+        <form [formGroup]="editProductForm" novalidate>
+            <div class="form-group">
+              <label>Name</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                formControlName="name" 
+                [ngClass]="{'is-invalid': name.errors && (name.touched || name.dirty), 'is-valid':name.valid}">
+              <div class="invalid-feedback" >
+                <strong *ngIf="name.errors?.['required']">Name is required</strong>
+              </div>
+            </div>
+            <div class="form-group ">
+              <label>Price</label>
+              <input 
+                type="number" 
+                class="form-control" 
+                formControlName="price"
+                [ngClass]="{'is-invalid': price.errors && (price.touched || price.dirty), 'is-valid': price.valid}">
+              <div class="invalid-feedback">
+                <strong *ngIf="price.errors?.['required']">Price is required</strong>
+                <strong *ngIf="price.errors?.['min']">Price must be atleast 1</strong>
+              </div> 
+            </div>
+            <div class="form-group ">
+              <label>Discount</label>
+              <input 
+               type="number" 
+               class="form-control" 
+               formControlName="discount" 
+               [ngClass]="{'is-invalid': discount.errors && (discount.touched || discount.dirty), 'is-valid': discount.valid}">
+              <div class="invalid-feedback" >
+                <strong *ngIf="discount.errors?.['required']">Discount is required</strong>
+                <strong *ngIf="discount.errors?.['min']">Discount must be atleast 0</strong> 
+                <strong *ngIf="discount.errors?.['max']">Discount can be maximum 50</strong>  
+              </div>
+            </div>
+            <div class="form-group ">
+              <label>Stock</label>
+              <input 
+               type="number" 
+               class="form-control" 
+               formControlName="stock" 
+               [ngClass]="{'is-invalid': stock.errors && (stock.touched || stock.dirty), 'is-valid': discount.valid}">
+              <div class="invalid-feedback" >
+                <strong *ngIf="stock.errors?.['required']">stock is required</strong>
+                <strong *ngIf="stock.errors?.['min']">stock must be atleast 0</strong>   
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Product Type</label>
+              <select
+                class="form-control" 
+                formControlName="productType" 
+                [ngClass]="{'is-invalid': productType.errors && (productType.touched || productType.dirty), 'is-valid':productType.valid}" >
+                <option *ngFor="let p of productTypes">{{ ProductTypes[p]}}</option>
+              </select>
+              <div class="invalid-feedback" >
+                  <strong>Select Product Type.</strong>    
+              </div>
+            </div>
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" [disabled]="editProductForm.invalid" (click)="onEditProduct(editProductForm.value)" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>

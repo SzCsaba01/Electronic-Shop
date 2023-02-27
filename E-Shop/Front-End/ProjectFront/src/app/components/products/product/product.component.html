@@ -1,0 +1,19 @@
+<div class="card border-primary mb-3 text-dark">
+    <div class="card-body">
+        <img
+        [src]="product.picture"
+        alt="Product"
+        class="rounded img-fluid"
+        (click)="onViewProductDetails()"
+        >
+      <h4 class="card-title">{{product.name}}</h4>
+      <h5 class="card-text" *ngIf="product.discount > 0">Discount {{1/product.discount | percent }} <s>{{product.price|currency:'EUR'}}</s> {{ product.price - (product.price*1/product.discount)|currency:'EUR'}}</h5>
+      <h5 class="card-text" *ngIf="product.discount == 0">{{product.price | currency:'EUR'}}</h5>
+    </div>
+    <div class="card-footer text-muted">
+      <button *ngIf="userRole == expectedRole" type="button" class="btn bi bi-pen" (click)="onEditProduct()"></button>
+      <button *ngIf="userRole == expectedRole" type="button" class="btn bi bi-trash" (click)="onDelete()" ></button>
+      <button type="button" class="btn bi bi-heart" (click)="onAddToFavorite()"></button>
+      <button type="button" class="btn bi bi-cart" (click)="onAddToCart()"></button>
+    </div>
+  </div>

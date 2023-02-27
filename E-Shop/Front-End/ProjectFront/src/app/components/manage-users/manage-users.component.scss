@@ -1,0 +1,70 @@
+.scrollable-div{
+    width:520px;
+    overflow-y:scroll;
+    height: calc(100vh - 160px);
+    margin: 10px 0px 0px 19px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .title {
+      width: 300px;
+    }
+  
+    .details {
+      width: 350px;
+    }
+    
+    .btn-group-border-radius {
+      width: 340px;
+    }
+  
+    .scrollable-div{
+      width:auto;
+    }
+  }
+
+.margin-append-button{
+  margin-top: 10px;
+}
+
+ag-grid-angular {
+    height: 363px;
+    width: 1402px;
+}
+
+.ag-header-group-cell-label { 
+  justify-content: center; 
+}
+
+.ag-header-cell-label { 
+  justify-content: center;
+ }
+
+.btn{
+  max-width: 150px;
+  max-height: 37px;
+}
+
+.input-group{
+  margin-top: 90px;
+}
+
+.input-size{
+  margin-right: 31px;
+  max-height: 45px;
+  max-width: 170px;
+}
+
+.btn-group{
+  margin-top: 90px;
+}
+
+.close{
+  cursor: pointer;
+}
+
+.modal {
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+

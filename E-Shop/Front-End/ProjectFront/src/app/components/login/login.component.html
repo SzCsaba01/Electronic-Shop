@@ -1,0 +1,37 @@
+<div>
+    <div class="form-bg">
+        <div class="container">
+            <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8">
+                <div class="form-container">
+                    <div class="form-icon">
+                        <i class="fa fa-user-circle"></i>
+                        <span class="signup"><a routerLink="/registration">Don't have account? Sign Up</a></span>
+                    </div>
+                    <form class="form-horizontal" [formGroup]="loginForm">
+                        <h3 clas="title"><a class="title" routerLink="/home">Home</a></h3>
+                        <h3 class="title">Member Login</h3>
+                        <div class="form-group">
+                            <span class="input-icon"><i class="fa fa-envelope"></i></span>
+                            <input 
+                                class="form-control" 
+                                type="text" 
+                                placeholder="Email Address / Username"
+                                formControlName="userCredentials">
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon"><i class="fa fa-lock"></i></span>
+                            <input 
+                                class="form-control" 
+                                type="password" 
+                                placeholder="Password"
+                                formControlName="password">
+                        </div>
+                        <button class="btn signin" (click)="onLogin(loginForm.value)">Login</button>
+                        <span class="forgot-pass"><a routerLink="/forgot-password">Forgot Username/Password?</a></span>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

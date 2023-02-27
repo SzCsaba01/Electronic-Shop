@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="navbar-brand" routerLink="/home" routerLinkActive="active">Electronic-Shop</a>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+          <a class="nav-link" routerLink="/home">Products</a>
+          <div class="dropdown-content" >
+            <a routerLinkActive="active" routerLink="/product/{{ ProductTypes[productType]}}" *ngFor="let productType of productTypes">{{ ProductTypes[productType]}}</a>
+          </div>
+        </div> 
+      </li>
+      <li class="nav-item">
+        <div class="input-group">
+          <input type="text" id ="SearchProductName" class="form-control rounded" placeholder="Search" [(ngModel)]="searchedProductsByName" (ngModelChange)="onSearchProductName()">
+          <button type="button" class="btn btn-primary" (click)="onSearchProductName()"><i class="bi bi-search"></i></button>
+        </div>
+      </li>
+      <li class="nav-item" *ngIf="userRole == expectedRole">
+        <a class="nav-link" routerLink="/manageProducts" routerLinkActive="active">Manage Products</a>
+      </li>
+      <li calss="nav-item" *ngIf="userRole == expectedRole">
+        <a class="nav-link" routerLink="/manageUsers" routerLinkActive="active">Manage Users</a>
+      </li>
+    </ul>
+    
+    <div>
+        <ul class="navbar-nav me-auto align-center">
+          <li class="nav-item" *ngIf="loginStatus">
+            <img [src]="profilePicture"
+            onerror="src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'"
+            alt="avatar" class="rounded-circle img-fluid">
+          </li>
+        <li class="nav-item">
+          <a class="nav-link"  *ngIf="loginStatus" routerLink="/profile/{{userId}}">Profile Details</a>
+        </li>
+
+        <li class="nav-item">
+          <div class="dropdown">
+            <a class="nav-link" routerLink="/home"><i class="bi bi-heart"></i>Favorites</a>
+            <div class="dropdown-content">
+              <div class="row" *ngFor="let favoriteProduct of favoriteProducts">
+                <div class="col-md-auto"><img [src]="favoriteProduct.picture" class="image" (click)="onViewProductDetails(favoriteProduct.id)"></div>
+                <div class="col-md-auto">{{favoriteProduct.name}}</div>
+                <div class="col-md-auto">{{favoriteProduct.price | currency : 'EUR'}}</div>
+                <div class="col-md-auto"><i (click)="deleteProductFromFavorites(favoriteProduct.id)" class="close bi bi-x-circle clickable cancel-button-modals"></i></div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <a class="nav-link" routerLink="/order/{{userId}}"><i class="bi bi-cart">Cart</i></a>
+            <div class="dropdown-content">
+              <div class="row" *ngFor="let cartProduct of cartProducts">
+                <div class="col-md-auto"><img [src]="cartProduct.picture" class="image" (click)="onViewProductDetails(cartProduct.id)"></div>
+                <div class="col-md-auto">{{cartProduct.name}}</div>
+                <div class="col-md-auto">{{cartProduct.price | currency : 'EUR'}}</div>
+                <div class="col-md-auto"><i (click)="deleteProductFromCart(cartProduct.id)" class="close bi bi-x-circle clickable cancel-button-modals"></i></div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item" *ngIf="!loginStatus"> 
+          <a class="nav-link logout" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="loginStatus"> 
+          <a class="nav-link logout" (click)="changeShowLogoutModal()">Logout</a>
+        </li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<div *ngIf="isShownLogoutModal" class="modal" [ngStyle]="{'display':'block'}">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4>Do you want to logout?</h4>
+              <i (click)="changeShowLogoutModal()" class="close bi bi-x-circle clickable cancel-button-modals"></i>
+          </div>
+          <div class="modal-footer justify-content-center">
+              <button type="button" (click)="onLogout()" class="btn btn-danger">Logout</button>
+          </div>
+      </div>
+  </div>
+</div>

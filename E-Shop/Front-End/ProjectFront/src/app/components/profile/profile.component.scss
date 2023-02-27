@@ -1,0 +1,28 @@
+img {
+    margin-bottom: 15px;
+    max-width: 180px;
+    max-height: 180px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.products-image{
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.products{
+  max-width: 150px;
+  max-height: 150px;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 0;
+}
+
+.orders{
+  max-width: 200px;
+}
+
+.text-size{
+  font-size: 13px;
+}

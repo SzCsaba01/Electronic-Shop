@@ -1,0 +1,223 @@
+<div class="vh-150" style="background-color: #eee;">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+  
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+  
+                  <form class="mx-1 mx-md-4" [formGroup]="registrationForm">
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="input-group mb-3">
+                        <i class="bi bi-person-badge-fill registration-icons"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="firstName"
+                            [ngClass]="{'is-invalid': firstName.errors && (firstName.touched || firstName.dirty), 'is-valid': firstName.valid}"/>
+                            <div class="invalid-feedback" >
+                              <strong *ngIf="firstName.errors?.['required']">First name is required</strong>
+                            </div>
+                          <label class="form-label" >First Name</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="input-group mb-3">
+                        <i class="bi bi-person-badge registration-icons"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input 
+                            type="text" 
+                            class="form-control"
+                            formControlName="lastName"
+                            [ngClass]="{'is-invalid': lastName.errors && (lastName.touched || lastName.dirty), 'is-valid': lastName.valid}"/>
+                            <div class="invalid-feedback" >
+                              <strong *ngIf="lastName.errors?.['required']">Last name is required</strong>
+                            </div>
+                          <label class="form-label" >Last Name</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Country</mat-label>
+                        <mat-select
+                          [formControl]="country"
+                          name="country">
+                          <mat-option *ngFor="let country of countryStateCity.Country" [value]="country.isoCode">
+                            {{ country.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="country.hasError('required')"
+                          >Please select a country.
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <mat-form-field appearance="fill">
+                        <mat-label>State</mat-label>
+                        <mat-select
+                          [formControl]="state"
+                          name="state">
+                          <mat-option *ngFor="let state of countryStateCity.State" [value]="state.isoCode">
+                            {{ state.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="state.hasError('required')"
+                          >Please select a state.</mat-error
+                        >
+                      </mat-form-field>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <mat-form-field appearance="fill">
+                        <mat-label>City</mat-label>
+                        <mat-select 
+                          [formControl]="city" 
+                          name="city" >
+                          <mat-option *ngFor="let city of countryStateCity.City" [value]="city.name">
+                            {{ city.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="city.hasError('required')"
+                          >Please select a city.</mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="input-group mb-3">
+                        <i class="bi bi-geo-alt-fill registration-icons"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="address"
+                            [ngClass]="{'is-invalid': address.errors && (address.touched || address.dirty), 'is-valid': address.valid}"/>
+                            <div class="invalid-feedback" >
+                              <strong *ngIf="address.errors?.['required']">Address is required</strong>
+                            </div>
+                            <label class="form-label" >Address</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="input-group mb-3">
+                        <i class="bi bi-telephone-fill registration-icons"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="phoneNumber"
+                            [ngClass]="{'is-invalid': phoneNumber.errors && (phoneNumber.touched || phoneNumber.dirty), 'is-valid': phoneNumber.valid}"/>
+                            <div class="invalid-feedback" >
+                              <strong *ngIf="phoneNumber.errors?.['required']">Phone number is required</strong>
+                              <strong *ngIf="phoneNumber.errors?.['pattern']">Invalid phone number</strong>
+                            </div>
+                            <label class="form-label" >Phone Number</label>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="input-group mb-3">
+                        <i class="bi bi-person-fill registration-icons"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input 
+                            type="text" 
+                            class="form-control" 
+                            formControlName="username"
+                            [ngClass]="{'is-invalid': username.errors && (username.touched || username.dirty), 'is-valid': username.valid}"/>
+                            <div class="invalid-feedback" >
+                              <strong *ngIf="username.errors?.['required']">Username is required</strong>
+                              <strong *ngIf="username?.errors?.['minlength']">
+                                Username length must be greater than {{username.errors?.['minlength']?.['requiredLength']}} characters
+                              </strong>
+                            </div>
+                          <label class="form-label" >Username</label>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="input-group mb-3">
+                        <i class="bi bi-envelope-fill registration-icons"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input 
+                            type="email" 
+                            class="form-control"
+                            formControlName="email"
+                            [ngClass]="{'is-invalid': email.errors && (email.touched || email.dirty), 'is-valid': email.valid}" />
+                            <div class="invalid-feedback" >
+                              <strong *ngIf="email.errors?.['required']">Email is required</strong>
+                              <strong *ngIf="email.errors?.['email']">Invalid Email</strong>
+                            </div>
+                          <label class="form-label">Email</label>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="input-group mb-3">
+                        <i class="bi bi-lock-fill registration-icons"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input 
+                            type="password" 
+                            class="form-control" 
+                            formControlName="password"
+                            [ngClass]="{'is-invalid': password.errors && (password.touched || password.dirty), 'is-valid': password.valid}"/>
+                          <label class="form-label">Password</label>
+                          <div class="invalid-feedback" >
+                            <strong *ngIf="password.errors?.['required']">Password is required</strong>
+                            <strong *ngIf="password?.errors?.['minlength']">
+                              Password length must be greater than {{password.errors?.['minlength']?.['requiredLength']}} characters
+                            </strong>
+                            <strong *ngIf="password.errors?.['pattern']">Password most contain atleast a number, a lower and upper-case character and a special character</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <div class="input-group mb-3">
+                        <i class="bi bi-key-fill registration-icons"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <input 
+                            type="password" 
+                            class="form-control"
+                            formControlName="repeatPassword"
+                            [ngClass]="{'is-invalid': repeatPassword.errors && (repeatPassword.touched || repeatPassword.dirty), 'is-valid': repeatPassword.valid}"/>
+                            <div class="invalid-feedback" >
+                              <strong *ngIf="repeatPassword.errors?.['required']">Password is required</strong>
+                              <strong *ngIf="repeatPassword?.errors?.['minlength']">
+                                Repeat password length must be greater than {{repeatPassword.errors?.['minlength']?.['requiredLength']}} characters
+                              </strong>
+                              <strong *ngIf="repeatPassword.errors?.['pattern']">Password most contain atleast a number, a lower and upper-case character and a special character</strong>
+                            </div>
+                          <label class="form-label">Repeat your password</label>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button type="button" class="btn btn-primary btn-lg" [disabled]="registrationForm.invalid" (click)="register(registrationForm.value)">Register</button>
+                    </div>
+  
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

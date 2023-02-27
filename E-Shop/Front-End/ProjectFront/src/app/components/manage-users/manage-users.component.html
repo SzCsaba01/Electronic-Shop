@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+<div class="d-flex justify-content-center">
+    <div >
+        <div class="btn-toolbar justify-content-between ">
+            <div class="input-group">            
+                <input type="text" id="UserNameSearch" class="form-control input-size" placeholder="Search by Username" [(ngModel)]="searchedUserName" (ngModelChange)="onSearchByUserName()"/>
+                <input type="text" id="formControlDefault" class="form-control input-size" placeholder="Search by Email" [(ngModel)]="searchedEmail" (ngModelChange)="onSearchByEmail()"/>
+            </div>
+        </div>
+
+        <ag-grid-angular
+            class="ag-theme-balham-dark"
+            [defaultColDef]="defaultColDef"
+            [columnDefs]="columnDefs"
+            (gridReady)="onGridReady($event)"
+            [gridOptions]="gridOptions"
+            [animateRows]="true"
+            [rowData]="rowData"
+            >
+        </ag-grid-angular>
+
+        <div class="d-flex justify-content-end">
+            <span class="label">
+                {{currentNumberOfUsersStartRow}} to {{currentNumberOfUsersEndRow}} of {{totalNumberOfUsers}}
+                <button class="btn btn-light" (click)="firstPage()" [disabled]="currentPage == 1">
+                    <i class="bi bi-chevron-bar-left"></i>
+                </button>
+                <button class="btn btn-light" (click)="previousPage()" [disabled]="currentPage == 1">
+                    <i class="bi bi-chevron-compact-left"></i>
+                </button>
+                Page {{currentPage}} of {{totalNumberOfPages}}
+                <button class="btn btn-light" (click)="nextPage()" [disabled]="currentPage == totalNumberOfPages">
+                    <i class="bi bi-chevron-compact-right"></i>
+                </button>
+                <button class="btn btn-light" (click)="lastPage()" [disabled]="currentPage == totalNumberOfPages">
+                    <i class="bi bi-chevron-bar-right"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+
+    <div *ngIf="isShownDeleteUser" class="modal" role="dialog" [ngStyle]="{'display':'block'}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Delete this User?</h4>
+                    <i (click)="changeShowDeleteUser()" class="close bi bi-x-circle clickable cancel-button-modals"></i>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" (click)="deleteUser()" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
