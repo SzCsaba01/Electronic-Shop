@@ -1,0 +1,14 @@
+D:\facultate\IS\Project\Back-End\Project.Data\bin\Debug\net6.0\Project.Data.deps.json
+D:\facultate\IS\Project\Back-End\Project.Data\bin\Debug\net6.0\Project.Data.runtimeconfig.json
+D:\facultate\IS\Project\Back-End\Project.Data\bin\Debug\net6.0\Project.Data.dll
+D:\facultate\IS\Project\Back-End\Project.Data\bin\Debug\net6.0\Project.Data.pdb
+D:\facultate\IS\Project\Back-End\Project.Data\obj\Debug\net6.0\Project.Data.csproj.AssemblyReference.cache
+D:\facultate\IS\Project\Back-End\Project.Data\obj\Debug\net6.0\Project.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\facultate\IS\Project\Back-End\Project.Data\obj\Debug\net6.0\Project.Data.AssemblyInfoInputs.cache
+D:\facultate\IS\Project\Back-End\Project.Data\obj\Debug\net6.0\Project.Data.AssemblyInfo.cs
+D:\facultate\IS\Project\Back-End\Project.Data\obj\Debug\net6.0\Project.Data.csproj.CoreCompileInputs.cache
+D:\facultate\IS\Project\Back-End\Project.Data\obj\Debug\net6.0\Project.Data.dll
+D:\facultate\IS\Project\Back-End\Project.Data\obj\Debug\net6.0\refint\Project.Data.dll
+D:\facultate\IS\Project\Back-End\Project.Data\obj\Debug\net6.0\Project.Data.pdb
+D:\facultate\IS\Project\Back-End\Project.Data\obj\Debug\net6.0\Project.Data.genruntimeconfig.cache
+D:\facultate\IS\Project\Back-End\Project.Data\obj\Debug\net6.0\ref\Project.Data.dll

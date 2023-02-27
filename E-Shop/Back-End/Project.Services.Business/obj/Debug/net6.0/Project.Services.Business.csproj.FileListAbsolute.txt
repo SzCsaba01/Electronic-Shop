@@ -1,0 +1,17 @@
+D:\facultate\IS\Project\Back-End\Project.Services.Business\bin\Debug\net6.0\Project.Services.Business.deps.json
+D:\facultate\IS\Project\Back-End\Project.Services.Business\bin\Debug\net6.0\Project.Services.Business.dll
+D:\facultate\IS\Project\Back-End\Project.Services.Business\bin\Debug\net6.0\Project.Services.Business.pdb
+D:\facultate\IS\Project\Back-End\Project.Services.Business\obj\Debug\net6.0\Project.Services.Business.csproj.AssemblyReference.cache
+D:\facultate\IS\Project\Back-End\Project.Services.Business\obj\Debug\net6.0\Project.Services.Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\facultate\IS\Project\Back-End\Project.Services.Business\obj\Debug\net6.0\Project.Services.Business.AssemblyInfoInputs.cache
+D:\facultate\IS\Project\Back-End\Project.Services.Business\obj\Debug\net6.0\Project.Services.Business.AssemblyInfo.cs
+D:\facultate\IS\Project\Back-End\Project.Services.Business\obj\Debug\net6.0\Project.Services.Business.csproj.CoreCompileInputs.cache
+D:\facultate\IS\Project\Back-End\Project.Services.Business\obj\Debug\net6.0\Project.Services.Business.dll
+D:\facultate\IS\Project\Back-End\Project.Services.Business\obj\Debug\net6.0\refint\Project.Services.Business.dll
+D:\facultate\IS\Project\Back-End\Project.Services.Business\obj\Debug\net6.0\Project.Services.Business.pdb
+D:\facultate\IS\Project\Back-End\Project.Services.Business\obj\Debug\net6.0\ref\Project.Services.Business.dll
+D:\facultate\IS\Project\Back-End\Project.Services.Business\bin\Debug\net6.0\Project.Data.dll
+D:\facultate\IS\Project\Back-End\Project.Services.Business\bin\Debug\net6.0\Project.Services.Contracts.dll
+D:\facultate\IS\Project\Back-End\Project.Services.Business\bin\Debug\net6.0\Project.Services.Contracts.pdb
+D:\facultate\IS\Project\Back-End\Project.Services.Business\bin\Debug\net6.0\Project.Data.pdb
+D:\facultate\IS\Project\Back-End\Project.Services.Business\obj\Debug\net6.0\Project.Services.Business.csproj.CopyComplete
