@@ -1,7 +1,25 @@
 # Electronic-Shop
 
-In this project I used .NET 6 and Angular to make a web application called Electronic-Shop. As an Administrator, you can add, delete, modify Products and view and delete Users. Users can register, verify their email and they can login to the app. If users are logged in, they can add Products to Favorites and Cart, search for products by name, and choose the types of products they want to see. They can purchase the Products from the cart and the purchases will be displayed in the profile details. For the purchase the information from the profile details will be used.
+Electronic-Shop is a web application built with .NET 6 and Angular, designed to provide a seamless online shopping experience for electronic products. This application offers a range of features for both administrators and users, ensuring an efficient and user-friendly platform.
 
-I used Entity-framework for database manipulation, SendGrid as email service for registration and registration confirmation.
-To show users in a table I used Ag-Grid and for products layout I used Angular-Material.
-For more details see the Documentation.
+## Features
+
+### Administrator Capabilities
+
+- **Manage Products:** Add, delete, and modify product details.
+- **User Management:** View and delete users.
+
+### User Capabilities
+
+- **Registration and Login:** Users can register, verify their email via SendGrid, and log in to the app.
+- **Product Interaction:** Logged-in users can add products to their favorites and cart, search for products by name, and filter products by type.
+- **Purchases:** Users can purchase products from their cart, and the purchase details will be displayed in their profile.
+- **Profile Management:** Purchase information is automatically populated from the profile details.
+
+## Technologies Used
+
+- **Backend:** .NET 6
+- **Frontend:** Angular
+- **Database:** Entity Framework for database manipulation
+- **Email Service:** SendGrid for email registration and confirmation
+- **UI Components:** Ag-Grid for displaying users and Angular-Material for product layout
